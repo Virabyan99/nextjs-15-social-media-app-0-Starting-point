@@ -1,3 +1,4 @@
+
 "use server"
 
 import { lucia } from "@/auth";
@@ -72,11 +73,12 @@ export async function signUp(
             sessionCookie.attributes
         )
 
-        return redirect("/")
+        // No need to return redirect
+         return redirect("/login")
 
     } catch(error) {
         if(isRedirectError(error)) throw error;
-        console.log(error)
+        console.error("Sign-up error:", error)
         return {
             error: "ինչ-որ բան սխալ է, խնդրում ենք կրկին փորձել"
         }
